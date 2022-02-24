@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\Patient $patient
@@ -46,10 +47,10 @@
                     <th><?= __('Created At') ?></th>
                     <td><?= h($patient->created_at) ?></td>
                 </tr>
-                <tr>
+                <!-- <tr>
                     <th><?= __('Updated At') ?></th>
                     <td><?= h($patient->updated_at) ?></td>
-                </tr>
+                </tr> -->
             </table>
         </div>
     </div>

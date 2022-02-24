@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\Patient $patient
@@ -22,13 +23,13 @@
             <fieldset>
                 <legend><?= __('Edit Patient') ?></legend>
                 <?php
-                    echo $this->Form->control('family');
-                    echo $this->Form->control('given');
-                    echo $this->Form->control('phone');
-                    echo $this->Form->control('city');
-                    echo $this->Form->control('country');
-                    echo $this->Form->control('created_at');
-                    echo $this->Form->control('updated_at');
+                echo $this->Form->control('family');
+                echo $this->Form->control('given');
+                echo $this->Form->control('phone');
+                echo $this->Form->control('city');
+                echo $this->Form->control('country');
+                // echo $this->Form->control('created_at');
+                // echo $this->Form->control('updated_at');
                 ?>
             </fieldset>
             <?= $this->Form->button(__('Submit')) ?>

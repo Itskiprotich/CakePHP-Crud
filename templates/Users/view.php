@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\User $user
@@ -34,10 +35,10 @@
                     <th><?= __('Created At') ?></th>
                     <td><?= h($user->created_at) ?></td>
                 </tr>
-                <tr>
+                <!-- <tr>
                     <th><?= __('Updated At') ?></th>
                     <td><?= h($user->updated_at) ?></td>
-                </tr>
+                </tr> -->
             </table>
         </div>
     </div>
