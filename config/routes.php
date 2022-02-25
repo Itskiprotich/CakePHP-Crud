@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Routes configuration.
  *
@@ -50,7 +51,8 @@ return static function (RouteBuilder $routes) {
          * its action called 'display', and we pass a param to select the view file
          * to use (in this case, templates/Pages/home.php)...
          */
-        $builder->connect('/', ['controller' => 'Pages', 'action' => 'display', 'home']);
+        //  $builder->connect('/', ['controller' => 'Pages', 'action' => 'display', 'home']);
+        $builder->connect('/', ['controller' => 'Patients', 'action' => 'index']);
 
         /*
          * ...and connect the rest of 'Pages' controller's URLs.
@@ -78,14 +80,35 @@ return static function (RouteBuilder $routes) {
      * open new scope and define routes there.
      *
      * ```
-     * $routes->scope('/api', function (RouteBuilder $builder) {
-     *     // No $builder->applyMiddleware() here.
-     *
-     *     // Parse specified extensions from URLs
-     *     // $builder->setExtensions(['json', 'xml']);
-     *
-     *     // Connect API actions here.
-     * });
-     * ```
+     * 
+     * * ```
      */
+
+    $routes->scope('/api', function (RouteBuilder $routes) {
+        $routes->setExtensions(['json']);
+        $routes->resources('Users');
+    });
+    $routes->scope('/api', function (RouteBuilder $routes) {
+        // No $builder->applyMiddleware() here.
+
+        // Parse specified extensions from URLs
+        // $builder->setExtensions(['json', 'xml']);
+
+        // Connect API actions here.
+        $routes->scope('/v1', function (RouteBuilder $routes) {
+            // $routes->setExtensions(['json', 'xml']);
+            $routes->scope('/', function (RouteBuilder $routes) {
+                //     $routes->get('/list', ['controller' => 'Patients', 'action' => 'list_patients']);
+                $routes->setExtensions(['json']);
+                $routes->resources('Patients');
+            });
+        });
+    });
+
+    //prefix
+    $routes->prefix('api/v2', function (RouteBuilder $routes) {
+        $routes->prefix('users', function (RouteBuilder $routes) {
+            $routes->connect('/{Users}/{index}');
+        });
+    });
 };

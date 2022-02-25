@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Controller;
@@ -18,9 +19,17 @@ class PatientsController extends AppController
      */
     public function index()
     {
-        $patients = $this->paginate($this->Patients);
 
-        $this->set(compact('patients'));
+        $patients = $this->paginate($this->Patients);
+        $this->RequestHandler->respondAs('json');
+        $this->autoRender = false;
+        echo json_encode(array('success' => true, 'code' => 200, 'data' => $patients));
+    }
+
+    public function listPatients()
+    {
+        # code...
+        $patients = $this->paginate($this->Patients);
     }
 
     /**
